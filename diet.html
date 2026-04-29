@@ -1,0 +1,1874 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анти-Акне Диета | 7 Дней</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        :root {
+            --bg: #0a0a0f;
+            --card: #12121a;
+            --card-hover: #1a1a25;
+            --accent: #4ade80;
+            --accent-dim: #22c55e;
+            --accent-glow: rgba(74, 222, 128, 0.15);
+            --red: #f87171;
+            --red-glow: rgba(248, 113, 113, 0.15);
+            --orange: #fb923c;
+            --orange-glow: rgba(251, 146, 60, 0.15);
+            --blue: #60a5fa;
+            --blue-glow: rgba(96, 165, 250, 0.15);
+            --purple: #a78bfa;
+            --purple-glow: rgba(167, 139, 250, 0.15);
+            --yellow: #fbbf24;
+            --yellow-glow: rgba(251, 191, 36, 0.15);
+            --text: #e2e8f0;
+            --text-dim: #94a3b8;
+            --text-dark: #64748b;
+            --border: #1e1e2e;
+            --border-light: #2a2a3a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-dim); }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(74, 222, 128, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 60%, rgba(96, 165, 250, 0.03) 0%, transparent 50%);
+            animation: heroPulse 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroPulse {
+            0% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1.1) rotate(3deg); }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: var(--accent-glow);
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 .gradient {
+            background: linear-gradient(135deg, var(--accent), var(--blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat .number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .hero-stat .label {
+            font-size: 0.8rem;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-dark);
+            font-size: 0.75rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        .scroll-arrow {
+            width: 20px;
+            height: 20px;
+            border-right: 2px solid var(--text-dark);
+            border-bottom: 2px solid var(--text-dark);
+            transform: rotate(45deg);
+        }
+
+        /* Navigation */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 0;
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .nav-inner::-webkit-scrollbar { display: none; }
+
+        .nav-link {
+            padding: 1rem 1.5rem;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            white-space: nowrap;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        /* Sections */
+        .section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .tag-green { background: var(--accent-glow); color: var(--accent); border: 1px solid rgba(74,222,128,0.2); }
+        .tag-red { background: var(--red-glow); color: var(--red); border: 1px solid rgba(248,113,113,0.2); }
+        .tag-blue { background: var(--blue-glow); color: var(--blue); border: 1px solid rgba(96,165,250,0.2); }
+        .tag-orange { background: var(--orange-glow); color: var(--orange); border: 1px solid rgba(251,146,60,0.2); }
+        .tag-purple { background: var(--purple-glow); color: var(--purple); border: 1px solid rgba(167,139,250,0.2); }
+        .tag-yellow { background: var(--yellow-glow); color: var(--yellow); border: 1px solid rgba(251,191,36,0.2); }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-desc {
+            color: var(--text-dim);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            background: var(--card-hover);
+            border-color: var(--border-light);
+            transform: translateY(-2px);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+            cursor: pointer;
+        }
+
+        .card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .icon-green { background: var(--accent-glow); }
+        .icon-red { background: var(--red-glow); }
+        .icon-blue { background: var(--blue-glow); }
+        .icon-orange { background: var(--orange-glow); }
+        .icon-purple { background: var(--purple-glow); }
+        .icon-yellow { background: var(--yellow-glow); }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .card-subtitle {
+            font-size: 0.8rem;
+            color: var(--text-dark);
+        }
+
+        /* Shopping List */
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .shop-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .shop-card:hover {
+            border-color: var(--border-light);
+            transform: translateY(-2px);
+        }
+
+        .shop-card h3 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .shop-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+
+        .shop-item:last-child { border-bottom: none; }
+
+        .shop-item .name { color: var(--text); }
+        .shop-item .qty { color: var(--text-dim); font-size: 0.8rem; }
+        .shop-item .price { color: var(--accent); font-weight: 600; font-size: 0.85rem; }
+
+        .total-card {
+            background: linear-gradient(135deg, rgba(74,222,128,0.1), rgba(96,165,250,0.1));
+            border: 1px solid rgba(74,222,128,0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .total-card .amount {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent);
+        }
+
+        .total-card .label {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        /* Recipes */
+        .recipe-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .recipe-card:hover {
+            border-color: var(--border-light);
+        }
+
+        .recipe-header {
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .recipe-header:hover {
+            background: var(--card-hover);
+        }
+
+        .recipe-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .recipe-num {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: var(--accent-glow);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .recipe-name {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .recipe-toggle {
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .recipe-card.open .recipe-toggle {
+            transform: rotate(180deg);
+        }
+
+        .recipe-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .recipe-card.open .recipe-body {
+            max-height: 600px;
+        }
+
+        .recipe-content {
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .recipe-steps {
+            list-style: none;
+            counter-reset: step;
+        }
+
+        .recipe-steps li {
+            counter-increment: step;
+            padding: 6px 0 6px 36px;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        .recipe-steps li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            background: var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .recipe-steps li strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .recipe-steps li em {
+            color: var(--orange);
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        /* Meal Plan */
+        .day-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .day-card:hover {
+            border-color: var(--border-light);
+        }
+
+        .day-header {
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .day-header:hover {
+            background: var(--card-hover);
+        }
+
+        .day-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .day-num {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .day-1 .day-num { background: var(--accent-glow); color: var(--accent); }
+        .day-2 .day-num { background: var(--blue-glow); color: var(--blue); }
+        .day-3 .day-num { background: var(--orange-glow); color: var(--orange); }
+        .day-4 .day-num { background: var(--purple-glow); color: var(--purple); }
+        .day-5 .day-num { background: var(--accent-glow); color: var(--accent); }
+        .day-6 .day-num { background: var(--blue-glow); color: var(--blue); }
+        .day-7 .day-num { background: var(--orange-glow); color: var(--orange); }
+
+        .day-name {
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        .day-hint {
+            font-size: 0.8rem;
+            color: var(--text-dark);
+        }
+
+        .day-toggle {
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .day-card.open .day-toggle {
+            transform: rotate(180deg);
+        }
+
+        .day-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .day-card.open .day-body {
+            max-height: 800px;
+        }
+
+        .day-content {
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .meal {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .meal:last-child { border-bottom: none; }
+
+        .meal-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+
+        .meal-label.breakfast { color: var(--orange); }
+        .meal-label.lunch { color: var(--accent); }
+        .meal-label.dinner { color: var(--blue); }
+
+        .meal-items {
+            list-style: none;
+        }
+
+        .meal-items li {
+            padding: 4px 0 4px 20px;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        .meal-items li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--text-dark);
+        }
+
+        .meal-items li strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .day-alert {
+            background: var(--orange-glow);
+            border: 1px solid rgba(251, 146, 60, 0.2);
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 0.85rem;
+            color: var(--orange);
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Rules */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .rule-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            gap: 14px;
+            transition: all 0.3s;
+        }
+
+        .rule-card:hover {
+            border-color: var(--border-light);
+            transform: translateY(-2px);
+        }
+
+        .rule-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .rule-text h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .rule-text p {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--red), var(--orange), var(--yellow), var(--accent));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 1rem 0 2rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -33px;
+            top: 1.2rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid var(--bg);
+        }
+
+        .dot-red { background: var(--red); box-shadow: 0 0 10px var(--red-glow); }
+        .dot-orange { background: var(--orange); box-shadow: 0 0 10px var(--orange-glow); }
+        .dot-yellow { background: var(--yellow); box-shadow: 0 0 10px var(--yellow-glow); }
+        .dot-green { background: var(--accent); box-shadow: 0 0 10px var(--accent-glow); }
+
+        .timeline-period {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 4px;
+        }
+
+        .timeline-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .timeline-desc {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        /* Drinks */
+        .drink-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .drink-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .drink-card:hover {
+            border-color: var(--border-light);
+            transform: translateY(-2px);
+        }
+
+        .drink-emoji {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .drink-name {
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .drink-when {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+
+        /* Cheat Sheet Table */
+        .cheat-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            font-size: 0.85rem;
+        }
+
+        .cheat-table th {
+            background: rgba(74,222,128,0.05);
+            padding: 12px 14px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-dim);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cheat-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-dim);
+        }
+
+        .cheat-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .cheat-table tr:hover td {
+            background: var(--card-hover);
+        }
+
+        .cheat-table td:first-child {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-dark);
+            font-size: 0.85rem;
+        }
+
+        .footer-cta {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border-light), transparent);
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .hero-stats { gap: 1.5rem; }
+            .hero-stat .number { font-size: 2rem; }
+            .section { padding: 3rem 1rem; }
+            .shop-grid { grid-template-columns: 1fr; }
+            .rules-grid { grid-template-columns: 1fr; }
+            .drink-grid { grid-template-columns: 1fr 1fr; }
+            .nav-link { padding: 0.85rem 1rem; font-size: 0.8rem; }
+            .cheat-table { font-size: 0.75rem; }
+            .cheat-table th, .cheat-table td { padding: 8px 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-badge">🧬 Бюджетный протокол</div>
+        <h1>Анти-Акне<br><span class="gradient">Диета на 7 дней</span></h1>
+        <p class="hero-subtitle">Дешёвый, сытный и научно обоснованный план питания для чистой кожи. Без сахара, без химии, без лишних трат.</p>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="number">~1870₽</div>
+                <div class="label">Бюджет на неделю</div>
+            </div>
+            <div class="hero-stat">
+                <div class="number">7</div>
+                <div class="label">Дней</div>
+            </div>
+            <div class="hero-stat">
+                <div class="number">13</div>
+                <div class="label">Рецептов</div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Листай вниз</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- NAVIGATION -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#rules" class="nav-link">Правила</a>
+            <a href="#shopping" class="nav-link">Покупки</a>
+            <a href="#recipes" class="nav-link">Рецепты</a>
+            <a href="#plan" class="nav-link">Меню 7 дней</a>
+            <a href="#drinks" class="nav-link">Напитки</a>
+            <a href="#cheat" class="nav-link">Шпаргалка</a>
+            <a href="#timeline" class="nav-link">Прогресс</a>
+        </div>
+    </nav>
+
+    <!-- RULES -->
+    <section class="section" id="rules">
+        <div class="section-header">
+            <span class="section-tag tag-red">Важно</span>
+            <h2 class="section-title">Железные правила</h2>
+            <p class="section-desc">Соблюдай все 8 пунктов. Нарушил один — откатился на старт.</p>
+        </div>
+
+        <div class="rules-grid">
+            <div class="rule-card">
+                <div class="rule-icon icon-red">🚫</div>
+                <div class="rule-text">
+                    <h4>Кола, газировка, энергетики</h4>
+                    <p>Забудь навсегда. Это главная причина твоих прыщей. Даже «без сахара» — нельзя.</p>
+                </div>
+            </div>
+            <div class="rule-card">
+                <div class="rule-icon icon-red">🚫</div>
+                <div class="rule-text">
+                    <h4>Конфеты, шоколад, печенье</h4>
+                    <p>Весь магазинный сахар — в мусор. Сахар делает кожное сало густым и забивает поры.</p>
+                </div>
+            </div>
+            <div class="rule-card">
+                <div class="rule-icon icon-green">✅</div>
+                <div class="rule-text">
+                    <h4>Ешь 3 раза в день</h4>
+                    <p>Не пропускай приёмы пищи. Голод приведёт к срыву на сладкое.</p>
+                </div>
+            </div>
+            <div class="rule-card">
+                <div class="rule-icon icon-orange">🥕</div>
+                <div class="rule-text">
+                    <h4>Морковь — ВСЕГДА с маслом</h4>
+                    <p>Витамин А жирорастворимый. Без масла он не усвоится и пройдёт транзитом.</p>
+                </div>
+            </div>
+            <div class="rule-card">
+                <div class="rule-icon icon-yellow">🧈</div>
+                <div class="rule-text">
+                    <h4>В каши — сливочное масло</h4>
+                    <p>Это твои калории, витамины A, D, E. Без него похудеешь ниже нормы.</p>
+                </div>
+            </div>
+            <div class="rule-card">
+                <div class="rule-icon icon-purple">🫘</div>
+                <div class="rule-text">
+                    <h4>Кунжут — каждый день</h4>
+                    <p>1–2 чайные ложки на любую еду. Тщательно разжёвывай. Это твой кальций.</p>
+                </div>
+            </div>
+            <div class="rule-card">
+                <div class="rule-icon icon-blue">💧</div>
+                <div class="rule-text">
+                    <h4>Пей воду постоянно</h4>
+                    <p>1.5–2 литра в день. Вода вымывает сахар из крови и очищает кожу.</p>
+                </div>
+            </div>
+            <div class="rule-card">
+                <div class="rule-icon icon-green">🍚</div>
+                <div class="rule-text">
+                    <h4>Голоден? Доешь кашу</h4>
+                    <p>Между едой можно доесть гречку, рис или картошку. Не терпи голод.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- SHOPPING LIST -->
+    <section class="section" id="shopping">
+        <div class="section-header">
+            <span class="section-tag tag-green">Покупки</span>
+            <h2 class="section-title">Список на неделю</h2>
+            <p class="section-desc">Всё, что нужно купить один раз на 7 дней.</p>
+        </div>
+
+        <div class="shop-grid">
+            <div class="shop-card">
+                <h3 style="color: var(--orange);">🌾 Крупы и гарниры</h3>
+                <div class="shop-item"><span class="name">Гречка</span><span class="qty">2 кг</span><span class="price">160 ₽</span></div>
+                <div class="shop-item"><span class="name">Рис</span><span class="qty">2 кг</span><span class="price">140 ₽</span></div>
+                <div class="shop-item"><span class="name">Горох сухой колотый</span><span class="qty">1 кг</span><span class="price">80 ₽</span></div>
+                <div class="shop-item"><span class="name">Картофель</span><span class="qty">5 кг</span><span class="price">150 ₽</span></div>
+            </div>
+
+            <div class="shop-card">
+                <h3 style="color: var(--red);">🥩 Белок</h3>
+                <div class="shop-item"><span class="name">Яйца</span><span class="qty">30 шт</span><span class="price">330 ₽</span></div>
+                <div class="shop-item"><span class="name">Куриная печень</span><span class="qty">1 кг</span><span class="price">200 ₽</span></div>
+            </div>
+
+            <div class="shop-card">
+                <h3 style="color: var(--accent);">🥬 Овощи и зелень</h3>
+                <div class="shop-item"><span class="name">Морковь</span><span class="qty">2 кг</span><span class="price">80 ₽</span></div>
+                <div class="shop-item"><span class="name">Лук репчатый</span><span class="qty">1.5 кг</span><span class="price">70 ₽</span></div>
+                <div class="shop-item"><span class="name">Укроп</span><span class="qty">2 пучка</span><span class="price">60 ₽</span></div>
+                <div class="shop-item"><span class="name">Петрушка</span><span class="qty">1 пучок</span><span class="price">40 ₽</span></div>
+                <div class="shop-item"><span class="name">Чеснок</span><span class="qty">1 головка</span><span class="price">20 ₽</span></div>
+            </div>
+
+            <div class="shop-card">
+                <h3 style="color: var(--yellow);">🧈 Жиры</h3>
+                <div class="shop-item"><span class="name">Масло сливочное 82.5%</span><span class="qty">200 г</span><span class="price">180 ₽</span></div>
+                <div class="shop-item"><span class="name">Масло подсолнечное</span><span class="qty">0.5 л</span><span class="price">80 ₽</span></div>
+            </div>
+
+            <div class="shop-card">
+                <h3 style="color: var(--purple);">💊 Кальций и витамины</h3>
+                <div class="shop-item"><span class="name">Кунжут</span><span class="qty">100 г</span><span class="price">70 ₽</span></div>
+                <div class="shop-item"><span class="name">Соль йодированная</span><span class="qty">1 пачка</span><span class="price">40 ₽</span></div>
+            </div>
+
+            <div class="shop-card">
+                <h3 style="color: var(--blue);">💧 Напитки</h3>
+                <div class="shop-item"><span class="name">Вода питьевая</span><span class="qty">2 × 5 л</span><span class="price">100 ₽</span></div>
+                <div class="shop-item"><span class="name">Чай чёрный/зелёный</span><span class="qty">1 пачка</span><span class="price">70 ₽</span></div>
+            </div>
+        </div>
+
+        <div class="total-card">
+            <div class="amount">~1 870 ₽</div>
+            <div class="label">Полная стоимость на 7 дней — дешевле, чем Кола + энергетики + конфеты</div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- RECIPES -->
+    <section class="section" id="recipes">
+        <div class="section-header">
+            <span class="section-tag tag-orange">Рецепты</span>
+            <h2 class="section-title">13 рецептов</h2>
+            <p class="section-desc">Нажми на рецепт, чтобы раскрыть пошаговую инструкцию.</p>
+        </div>
+
+        <!-- Recipe 1 -->
+        <div class="recipe-card" onclick="toggleRecipe(this)">
+            <div class="recipe-header">
+                <div class="recipe-header-left">
+                    <div class="recipe-num">1</div>
+                    <span class="recipe-name">Гречка базовая</span>
+                </div>
+                <span class="recipe-toggle">▼</span>
+            </div>
+            <div class="recipe-body">
+                <div class="recipe-content">
+                    <ol class="recipe-steps">
+                        <li>Промой гречку <strong>(100 г сухой)</strong> водой</li>
+                        <li>Залей водой 1:2 <strong>(200 мл воды)</strong></li>
+                        <li>Посоли <em>йодированной солью</em></li>
+                        <li>Доведи до кипения, убавь огонь на минимум</li>
+                        <li>Вари <strong>15–20 минут</strong> под крышкой</li>
+                        <li>В готовую кашу положи кусок <strong>сливочного масла (15–20 г)</strong></li>
+                        <li>Посыпь <strong>кунжутом</strong> (1 чайная ложка), разжуй тщательно</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recipe 2 -->
+        <div class="recipe-card" onclick="toggleRecipe(this)">
+            <div class="recipe-header">
+                <div class="recipe-header-left">
+                    <div class="recipe-num">2</div>
+                    <span class="recipe-name">Рис базовый</span>
+                </div>
+                <span class="recipe-toggle">▼</span>
+            </div>
+            <div class="recipe-body">
+                <div class="recipe-content">
+                    <ol class="recipe-steps">
+                        <li>Промой рис <strong>(100 г)</strong> холодной водой 3–4 раза, пока вода не станет прозрачной</li>
+                        <li>Залей водой <strong>1:1.5</strong></li>
+                        <li>Посоли</li>
+                        <li>Доведи до кипения, убавь на минимум</li>
+                        <li>Вари <strong>15 минут</strong> под крышкой, не мешай</li>
+                        <li>В готовый рис положи кусок <strong>сливочного масла (15–20 г)</strong></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recipe 3 -->
+        <div class="recipe-card" onclick="toggleRecipe(this)">
+            <div class="recipe-header">
+                <div class="recipe-header-left">
+                    <div class="recipe-num">3</div>
+                    <span class="recipe-name">Гороховое пюре</span>
+                </div>
+                <span class="recipe-toggle">▼</span>
+            </div>
+            <div class="recipe-body">
+                <div class="recipe-content">
+                    <ol class="recipe-steps">
+                        <li><em>Вечером:</em> Замочи горох <strong>(150 г)</strong> в холодной воде на ночь</li>
+                        <li>Слей старую воду, промой горох</li>
+                        <li>Залей свежей водой (чтобы покрывала горох на 3 см)</li>
+                        <li>Вари на слабом огне <strong>40–60 минут</strong>, периодически снимай пену</li>
+                        <li>Когда горох начнёт разваливаться — разомни его ложкой или толкушкой прямо в кастрюле</li>
+                        <li>Посоли</li>
+                        <li>Добавь <strong>сливочное масло (20 г)</strong></li>
+                        <li>Мелко нарежь укроп, посыпь сверху</li>
+                        <li>Если густое — добавь чуть воды</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recipe 4 -->
+        <div class="recipe-card" onclick="toggleRecipe(this)">
+            <div class="recipe-header">
+                <div class="recipe-header-left">
+                    <div class="recipe-num">4</div>
+                    <span class="recipe-name">Печень тушёная с луком</span>
+                </div>
+                <span class="recipe-toggle">▼</span>
+            </div>
+            <div class="recipe-body">
+                <div class="recipe-content">
+                    <ol class="recipe-steps">
+                        <li>Печень <strong>(200 г)</strong> промой, нарежь кусочками</li>
+                        <li>Лук <strong>(1 средняя луковица)</strong> нарежь полукольцами</li>
+                        <li>На сковороду — <strong>1 чайная ложка <em>подсолнечного</em> масла</strong></li>
+                        <li>Кинь лук, туши 3 минуты на среднем огне</li>
+                        <li>Добавь печень</li>
+                        <li>Посоли</li>
+                        <li>Накрой крышкой, убавь огонь</li>
+                        <li>Туши <strong>12–15 минут</strong> (не больше, иначе станет резиновой)</li>
+                        <li>Сними с огня, посыпь мелко нарезанным укропом</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recipe 5 -->
+        <div class="recipe-card" onclick="toggleRecipe(this)">
+            <div class="recipe-header">
+                <div class="recipe-header-left">
+                    <div class="recipe-num">5</div>
+                    <span class="recipe-name">Печень с морковью и луком</span>
+                </div>
+                <span class="recipe-toggle">▼</span>
+            </div>
+            <div class="recipe-body">
+                <div class="recipe-content">
+                    <ol class="recipe-steps">
+                        <li>Печень <strong>(200 г)</strong> нарежь кусочками</li>
+                        <li>Морковь <strong>(1 шт)</strong> натри на крупной тёрке</li>
+                        <li>Лук <strong>(1 шт)</strong> нарежь полукольцами</li>
+                        <li>На сковороду — <strong>1 чайная ложка <em>подсолнечного</em> масла</strong></li>
+                        <li>Сначала кинь лук и морковь, туши <strong>5 минут</strong></li>
+                        <li>Добавь печень</li>
+                        <li>Посоли, можно кинуть <strong>1 зубчик чеснока</strong> (раздави ножом)</li>
+                        <li>Накрой крышкой, туши <strong>12–15 минут</strong></li>
+                        <li>Посыпь петрушкой</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recipe 6 -->
+        <div class="recipe-card" onclick="toggleRecipe(this)">
+            <div class="recipe-header">
+                <div class="recipe-header-left">
+                    <div class="recipe-num">6</div>
+                    <span class="recipe-name">Картофель отварной</span>
+                </div>
+                <span class="recipe-toggle">▼</span>
+            </div>
+            <div class="recipe-body">
+                <div class="recipe-content">
+                    <ol class="recipe-steps">
+                        <li>Картофель <strong>(4–5 средних)</strong> почисть, порежь на четвертинки</li>
+                        <li>Залей холодной водой, посоли</li>
+                        <li>Доведи до кипения, вари <strong>20–25 минут</strong></li>
+                        <li>Слей воду</li>
+                        <li>Добавь <strong>сливочное масло (15–20 г)</strong></li>
+                        <li>Посыпь мелко нарезанным укропом</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recipe 7 -->
+        <div class="recipe-card" onclick="toggleRecipe(this)">
+            <div class="recipe-header">
+                <div class="recipe-header-left">
+                    <div class="recipe-num">7</div>
+                    <span class="recipe-name">Картофельное пюре (без молока)</span>
+                </div>
+                <span class="recipe-toggle">▼</span>
+            </div>
+            <div class="recipe-body">
+                <div class="recipe-content">
+                    <ol class="recipe-steps">
+                        <li>Картофель <strong>(5–6 средних)</strong> почисть, нарежь</li>
+                        <li>Вари в подсоленной воде <strong>20–25 минут</strong></li>
+                        <li><strong>Не сливай всю воду!</strong> Оставь немного (полстакана)</li>
+                        <li>Разомни толкушкой</li>
+                        <li>Добавь <strong>сливочное масло (25–30 г)</strong></li>
+                        <li>Если густое — подливай ту воду, в которой варил</li>
+                        <li>Посыпь укропом</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recipe 8 -->
+        <div class="recipe-card" onclick="toggleRecipe(this)">
+            <div class="recipe-header">
+                <div class="recipe-header-left">
+                    <div class="recipe-num">8</div>
+                    <span class="recipe-name">Морковный салат (витамин А)</span>
+                </div>
+                <span class="recipe-toggle">▼</span>
+            </div>
+            <div class="recipe-body">
+                <div class="recipe-content">
+                    <ol class="recipe-steps">
+                        <li>Морковь <strong>(1–2 шт)</strong> натри на мелкой тёрке</li>
+                        <li>Посоли</li>
+                        <li>Добавь <strong>1 столовую ложку <em>подсолнечного</em> масла</strong></li>
+                        <li>Перемешай</li>
+                        <li>По желанию — добавь <strong>1 зубчик тёртого чеснока</strong></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recipe 9 -->
+        <div class="recipe-card" onclick="toggleRecipe(this)">
+            <div class="recipe-header">
+                <div class="recipe-header-left">
+                    <div class="recipe-num">9</div>
+                    <span class="recipe-name">Гречка с яйцом и луком</span>
+                </div>
+                <span class="recipe-toggle">▼</span>
+            </div>
+            <div class="recipe-body">
+                <div class="recipe-content">
+                    <ol class="recipe-steps">
+                        <li>Свари гречку <strong>(100 г)</strong> как в рецепте 1</li>
+                        <li>Свари <strong>2 яйца</strong> вкрутую, нарежь кубиками</li>
+                        <li>Луковицу нарежь мелко <strong>(сырой лук)</strong></li>
+                        <li>Смешай всё в тарелке</li>
+                        <li>Добавь <strong>сливочное масло (15 г)</strong></li>
+                        <li>Посоли</li>
+                        <li>Посыпь укропом и <strong>кунжутом</strong></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recipe 10 -->
+        <div class="recipe-card" onclick="toggleRecipe(this)">
+            <div class="recipe-header">
+                <div class="recipe-header-left">
+                    <div class="recipe-num">10</div>
+                    <span class="recipe-name">Рис с яйцом и морковью</span>
+                </div>
+                <span class="recipe-toggle">▼</span>
+            </div>
+            <div class="recipe-body">
+                <div class="recipe-content">
+                    <ol class="recipe-steps">
+                        <li>Свари рис <strong>(100 г)</strong> как в рецепте 2</li>
+                        <li>Свари <strong>2 яйца</strong>, нарежь</li>
+                        <li>Морковь <strong>(1 шт)</strong> натри на тёрке</li>
+                        <li>Смешай рис, яйца, морковь</li>
+                        <li>Добавь <strong>1 ст. ложку <em>подсолнечного</em> масла</strong></li>
+                        <li>Посоли</li>
+                        <li>Посыпь петрушкой</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recipe 11 -->
+        <div class="recipe-card" onclick="toggleRecipe(this)">
+            <div class="recipe-header">
+                <div class="recipe-header-left">
+                    <div class="recipe-num">11</div>
+                    <span class="recipe-name">Картошка с печенью и морковным салатом</span>
+                </div>
+                <span class="recipe-toggle">▼</span>
+            </div>
+            <div class="recipe-body">
+                <div class="recipe-content">
+                    <ol class="recipe-steps">
+                        <li>Свари картофель <strong>(4 шт)</strong> — рецепт 6</li>
+                        <li>Потуши печень с луком — рецепт 4 (на <em>подсолнечном</em> масле)</li>
+                        <li>Сделай морковный салат — рецепт 8 (с <em>подсолнечным</em> маслом)</li>
+                        <li>Выложи всё на одну тарелку</li>
+                        <li>Картошку полей <strong>сливочным маслом</strong></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recipe 12 -->
+        <div class="recipe-card" onclick="toggleRecipe(this)">
+            <div class="recipe-header">
+                <div class="recipe-header-left">
+                    <div class="recipe-num">12</div>
+                    <span class="recipe-name">Гороховое пюре с печенью</span>
+                </div>
+                <span class="recipe-toggle">▼</span>
+            </div>
+            <div class="recipe-body">
+                <div class="recipe-content">
+                    <ol class="recipe-steps">
+                        <li>Свари гороховое пюре — рецепт 3 (со <strong>сливочным</strong> маслом)</li>
+                        <li>Потуши печень с луком — рецепт 4 (на <em>подсолнечном</em> масле)</li>
+                        <li>Положи пюре в тарелку, сверху печень</li>
+                        <li>Посыпь укропом</li>
+                        <li>Рядом — морковный салат с <strong><em>подсолнечным</em> маслом</strong></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recipe 13 -->
+        <div class="recipe-card" onclick="toggleRecipe(this)">
+            <div class="recipe-header">
+                <div class="recipe-header-left">
+                    <div class="recipe-num">13</div>
+                    <span class="recipe-name">Картошка «по-мужски»</span>
+                </div>
+                <span class="recipe-toggle">▼</span>
+            </div>
+            <div class="recipe-body">
+                <div class="recipe-content">
+                    <ol class="recipe-steps">
+                        <li>Свари картошку <strong>(5 шт)</strong> в мундире (не чисть!)</li>
+                        <li>Когда сварится — почисть, разломи вилкой на куски</li>
+                        <li>Посоли</li>
+                        <li>Положи <strong>сливочное масло (20 г)</strong></li>
+                        <li>Нарежь <strong>сырой лук</strong> кольцами, положи сверху</li>
+                        <li>Рядом — <strong>2 варёных яйца</strong></li>
+                        <li>Посыпь укропом и <strong>кунжутом</strong></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- MEAL PLAN -->
+    <section class="section" id="plan">
+        <div class="section-header">
+            <span class="section-tag tag-blue">Меню</span>
+            <h2 class="section-title">План на 7 дней</h2>
+            <p class="section-desc">Нажми на день, чтобы раскрыть полное меню.</p>
+        </div>
+
+        <!-- Day 1 -->
+        <div class="day-card day-1" onclick="toggleDay(this)">
+            <div class="day-header">
+                <div class="day-header-left">
+                    <div class="day-num">ПН</div>
+                    <div>
+                        <div class="day-name">Понедельник</div>
+                        <div class="day-hint">Картошка + Печень</div>
+                    </div>
+                </div>
+                <span class="day-toggle">▼</span>
+            </div>
+            <div class="day-body">
+                <div class="day-content">
+                    <div class="meal">
+                        <div class="meal-label breakfast">☀️ Завтрак</div>
+                        <ul class="meal-items">
+                            <li><strong>Гречка с яйцом и луком</strong> (рецепт 9)</li>
+                            <li>Сливочное масло в гречку</li>
+                            <li>Кунжут сверху</li>
+                            <li>Чай без сахара</li>
+                        </ul>
+                    </div>
+                    <div class="meal">
+                        <div class="meal-label lunch">🌿 Обед</div>
+                        <ul class="meal-items">
+                            <li><strong>Картошка с печенью и морковным салатом</strong> (рецепт 11)</li>
+                            <li>Картошка — со сливочным маслом</li>
+                            <li>Печень тушится на подсолнечном масле</li>
+                            <li>Морковный салат — с подсолнечным маслом</li>
+                            <li>Вода</li>
+                        </ul>
+                    </div>
+                    <div class="meal">
+                        <div class="meal-label dinner">🌙 Ужин</div>
+                        <ul class="meal-items">
+                            <li><strong>Рис с яйцом и морковью</strong> (рецепт 10)</li>
+                            <li>Подсолнечное масло в рис с морковью</li>
+                            <li>Чай</li>
+                        </ul>
+                    </div>
+                    <div class="day-alert">⚠️ Вечером замочи горох на завтра!</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="day-card day-2" onclick="toggleDay(this)">
+            <div class="day-header">
+                <div class="day-header-left">
+                    <div class="day-num">ВТ</div>
+                    <div>
+                        <div class="day-name">Вторник</div>
+                        <div class="day-hint">Горох + Печень</div>
+                    </div>
+                </div>
+                <span class="day-toggle">▼</span>
+            </div>
+            <div class="day-body">
+                <div class="day-content">
+                    <div class="meal">
+                        <div class="meal-label breakfast">☀️ Завтрак</div>
+                        <ul class="meal-items">
+                            <li><strong>Рис</strong> (рецепт 2) + сливочное масло</li>
+                            <li>2 варёных яйца</li>
+                            <li>Кунжут</li>
+                            <li>Чай</li>
+                        </ul>
+                    </div>
+                    <div class="meal">
+                        <div class="meal-label lunch">🌿 Обед</div>
+                        <ul class="meal-items">
+                            <li><strong>Гороховое пюре с печенью</strong> (рецепт 12)</li>
+                            <li>Горох — со сливочным маслом</li>
+                            <li>Печень тушится на подсолнечном масле</li>
+                            <li>Морковный салат (рецепт 8) — с подсолнечным маслом</li>
+                            <li>Вода</li>
+                        </ul>
+                    </div>
+                    <div class="meal">
+                        <div class="meal-label dinner">🌙 Ужин</div>
+                        <ul class="meal-items">
+                            <li><strong>Гречка</strong> (рецепт 1) + сливочное масло</li>
+                            <li>2 варёных яйца</li>
+                            <li>Чай</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 3 -->
+        <div class="day-card day-3" onclick="toggleDay(this)">
+            <div class="day-header">
+                <div class="day-header-left">
+                    <div class="day-num">СР</div>
+                    <div>
+                        <div class="day-name">Среда</div>
+                        <div class="day-hint">Пюре + Печень с морковью</div>
+                    </div>
+                </div>
+                <span class="day-toggle">▼</span>
+            </div>
+            <div class="day-body">
+                <div class="day-content">
+                    <div class="meal">
+                        <div class="meal-label breakfast">☀️ Завтрак</div>
+                        <ul class="meal-items">
+                            <li><strong>Гречка с яйцом и луком</strong> (рецепт 9)</li>
+                            <li>Сливочное масло</li>
+                            <li>Кунжут</li>
+                            <li>Чай</li>
+                        </ul>
+                    </div>
+                    <div class="meal">
+                        <div class="meal-label lunch">🌿 Обед</div>
+                        <ul class="meal-items">
+                            <li><strong>Печень с морковью и луком</strong> (рецепт 5) — на подсолнечном масле</li>
+                            <li><strong>Картофельное пюре</strong> (рецепт 7) — со сливочным маслом</li>
+                            <li>Вода</li>
+                        </ul>
+                    </div>
+                    <div class="meal">
+                        <div class="meal-label dinner">🌙 Ужин</div>
+                        <ul class="meal-items">
+                            <li><strong>Рис</strong> (рецепт 2) + сливочное масло</li>
+                            <li>2 варёных яйца</li>
+                            <li>Сырой лук вприкуску</li>
+                            <li>Чай</li>
+                        </ul>
+                    </div>
+                    <div class="day-alert">⚠️ Вечером замочи горох на завтра!</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 4 -->
+        <div class="day-card day-4" onclick="toggleDay(this)">
+            <div class="day-header">
+                <div class="day-header-left">
+                    <div class="day-num">ЧТ</div>
+                    <div>
+                        <div class="day-name">Четверг</div>
+                        <div class="day-hint">Горох + Яйца + Печень</div>
+                    </div>
+                </div>
+                <span class="day-toggle">▼</span>
+            </div>
+            <div class="day-body">
+                <div class="day-content">
+                    <div class="meal">
+                        <div class="meal-label breakfast">☀️ Завтрак</div>
+                        <ul class="meal-items">
+                            <li><strong>Рис с яйцом и морковью</strong> (рецепт 10)</li>
+                            <li>Подсолнечное масло</li>
+                            <li>Кунжут</li>
+                            <li>Чай</li>
+                        </ul>
+                    </div>
+                    <div class="meal">
+                        <div class="meal-label lunch">🌿 Обед</div>
+                        <ul class="meal-items">
+                            <li><strong>Гороховое пюре</strong> (рецепт 3) — со сливочным маслом</li>
+                            <li>2 варёных яйца</li>
+                            <li>Морковный салат (рецепт 8) — с подсолнечным маслом</li>
+                            <li>Вода</li>
+                        </ul>
+                    </div>
+                    <div class="meal">
+                        <div class="meal-label dinner">🌙 Ужин</div>
+                        <ul class="meal-items">
+                            <li><strong>Гречка</strong> (рецепт 1) + сливочное масло</li>
+                            <li><strong>Печень тушёная с луком</strong> (рецепт 4) — на подсолнечном масле</li>
+                            <li>Чай</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 5 -->
+        <div class="day-card day-5" onclick="toggleDay(this)">
+            <div class="day-header">
+                <div class="day-header-left">
+                    <div class="day-num">ПТ</div>
+                    <div>
+                        <div class="day-name">Пятница</div>
+                        <div class="day-hint">Картошка «по-мужски» + Печень</div>
+                    </div>
+                </div>
+                <span class="day-toggle">▼</span>
+            </div>
+            <div class="day-body">
+                <div class="day-content">
+                    <div class="meal">
+                        <div class="meal-label breakfast">☀️ Завтрак</div>
+                        <ul class="meal-items">
+                            <li><strong>Гречка с яйцом и луком</strong> (рецепт 9)</li>
+                            <li>Сливочное масло</li>
+                            <li>Кунжут</li>
+                            <li>Чай</li>
+                        </ul>
+                    </div>
+                    <div class="meal">
+                        <div class="meal-label lunch">🌿 Обед</div>
+                        <ul class="meal-items">
+                            <li><strong>Картошка «по-мужски»</strong> (рецепт 13) — со сливочным маслом</li>
+                            <li><strong>Печень с морковью и луком</strong> (рецепт 5) — на подсолнечном масле</li>
+                            <li>Вода</li>
+                        </ul>
+                    </div>
+                    <div class="meal">
+                        <div class="meal-label dinner">🌙 Ужин</div>
+                        <ul class="meal-items">
+                            <li><strong>Рис</strong> (рецепт 2) + сливочное масло</li>
+                            <li>2 варёных яйца</li>
+                            <li>Морковный салат (рецепт 8) — с подсолнечным маслом</li>
+                            <li>Чай</li>
+                        </ul>
+                    </div>
+                    <div class="day-alert">⚠️ Вечером замочи горох на завтра!</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 6 -->
+        <div class="day-card day-6" onclick="toggleDay(this)">
+            <div class="day-header">
+                <div class="day-header-left">
+                    <div class="day-num">СБ</div>
+                    <div>
+                        <div class="day-name">Суббота</div>
+                        <div class="day-hint">Горох + остатки печени</div>
+                    </div>
+                </div>
+                <span class="day-toggle">▼</span>
+            </div>
+            <div class="day-body">
+                <div class="day-content">
+                    <div class="meal">
+                        <div class="meal-label breakfast">☀️ Завтрак</div>
+                        <ul class="meal-items">
+                            <li><strong>Рис</strong> (рецепт 2) + сливочное масло</li>
+                            <li>2 варёных яйца</li>
+                            <li>Сырой лук вприкуску</li>
+                            <li>Кунжут</li>
+                            <li>Чай</li>
+                        </ul>
+                    </div>
+                    <div class="meal">
+                        <div class="meal-label lunch">🌿 Обед</div>
+                        <ul class="meal-items">
+                            <li><strong>Гороховое пюре с печенью</strong> (рецепт 12)</li>
+                            <li>Горох — со сливочным маслом</li>
+                            <li>Печень — на подсолнечном масле</li>
+                            <li>Морковный салат (рецепт 8) — с подсолнечным маслом</li>
+                            <li>Вода</li>
+                        </ul>
+                    </div>
+                    <div class="meal">
+                        <div class="meal-label dinner">🌙 Ужин</div>
+                        <ul class="meal-items">
+                            <li><strong>Гречка с яйцом и луком</strong> (рецепт 9)</li>
+                            <li>Сливочное масло</li>
+                            <li>Чай</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 7 -->
+        <div class="day-card day-7" onclick="toggleDay(this)">
+            <div class="day-header">
+                <div class="day-header-left">
+                    <div class="day-num">ВС</div>
+                    <div>
+                        <div class="day-name">Воскресенье</div>
+                        <div class="day-hint">Пюре + Яйца</div>
+                    </div>
+                </div>
+                <span class="day-toggle">▼</span>
+            </div>
+            <div class="day-body">
+                <div class="day-content">
+                    <div class="meal">
+                        <div class="meal-label breakfast">☀️ Завтрак</div>
+                        <ul class="meal-items">
+                            <li><strong>Гречка</strong> (рецепт 1) + сливочное масло</li>
+                            <li>2 варёных яйца</li>
+                            <li>Кунжут</li>
+                            <li>Чай</li>
+                        </ul>
+                    </div>
+                    <div class="meal">
+                        <div class="meal-label lunch">🌿 Обед</div>
+                        <ul class="meal-items">
+                            <li><strong>Картофельное пюре</strong> (рецепт 7) — со сливочным маслом</li>
+                            <li>2 варёных яйца</li>
+                            <li>Морковный салат (рецепт 8) — с подсолнечным маслом</li>
+                            <li>Сырой лук вприкуску</li>
+                            <li>Вода</li>
+                        </ul>
+                    </div>
+                    <div class="meal">
+                        <div class="meal-label dinner">🌙 Ужин</div>
+                        <ul class="meal-items">
+                            <li><strong>Рис с яйцом и морковью</strong> (рецепт 10)</li>
+                            <li>Подсолнечное масло</li>
+                            <li>Сырой лук</li>
+                            <li>Чай</li>
+                        </ul>
+                    </div>
+                    <div class="day-alert">⚠️ Если продолжаешь — замочи горох на понедельник!</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- DRINKS -->
+    <section class="section" id="drinks">
+        <div class="section-header">
+            <span class="section-tag tag-blue">Напитки</span>
+            <h2 class="section-title">Что пить</h2>
+            <p class="section-desc">Простая схема на каждый день.</p>
+        </div>
+
+        <div class="drink-grid">
+            <div class="drink-card">
+                <div class="drink-emoji">💧</div>
+                <div class="drink-name">Вода натощак</div>
+                <div class="drink-when">Утром, за 15 мин до еды — 1 стакан</div>
+            </div>
+            <div class="drink-card">
+                <div class="drink-emoji">🍵</div>
+                <div class="drink-name">Чай без сахара</div>
+                <div class="drink-when">На завтрак и ужин</div>
+            </div>
+            <div class="drink-card">
+                <div class="drink-emoji">🚰</div>
+                <div class="drink-name">Вода в течение дня</div>
+                <div class="drink-when">Цель: 1.5–2 литра</div>
+            </div>
+            <div class="drink-card">
+                <div class="drink-emoji">🚫</div>
+                <div class="drink-name">Захотел Колу?</div>
+                <div class="drink-when">Выпей стакан воды. Подожди 5 минут. Пройдёт.</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CHEAT SHEET -->
+    <section class="section" id="cheat">
+        <div class="section-header">
+            <span class="section-tag tag-purple">Шпаргалка</span>
+            <h2 class="section-title">Краткая таблица на неделю</h2>
+            <p class="section-desc">Повесь на стену или сохрани в телефон.</p>
+        </div>
+
+        <div style="overflow-x: auto;">
+            <table class="cheat-table">
+                <thead>
+                    <tr>
+                        <th>День</th>
+                        <th>☀️ Завтрак</th>
+                        <th>🌿 Обед</th>
+                        <th>🌙 Ужин</th>
+                        <th>⚠️</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Пн</td>
+                        <td>Гречка + яйца + лук</td>
+                        <td>Картошка + печень + морковь</td>
+                        <td>Рис + яйца + морковь</td>
+                        <td>Замочи горох</td>
+                    </tr>
+                    <tr>
+                        <td>Вт</td>
+                        <td>Рис + яйца</td>
+                        <td>Горох + печень + морковь</td>
+                        <td>Гречка + яйца</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>Ср</td>
+                        <td>Гречка + яйца + лук</td>
+                        <td>Пюре + печень + морковь</td>
+                        <td>Рис + яйца + лук</td>
+                        <td>Замочи горох</td>
+                    </tr>
+                    <tr>
+                        <td>Чт</td>
+                        <td>Рис + яйца + морковь</td>
+                        <td>Горох + яйца + морковь</td>
+                        <td>Гречка + печень</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>Пт</td>
+                        <td>Гречка + яйца + лук</td>
+                        <td>Картошка + печень + морковь</td>
+                        <td>Рис + яйца + морковь</td>
+                        <td>Замочи горох</td>
+                    </tr>
+                    <tr>
+                        <td>Сб</td>
+                        <td>Рис + яйца + лук</td>
+                        <td>Горох + печень + морковь</td>
+                        <td>Гречка + яйца + лук</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>Вс</td>
+                        <td>Гречка + яйца</td>
+                        <td>Пюре + яйца + морковь + лук</td>
+                        <td>Рис + яйца + морковь + лук</td>
+                        <td>Замочи горох</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- TIMELINE -->
+    <section class="section" id="timeline">
+        <div class="section-header">
+            <span class="section-tag tag-yellow">Прогресс</span>
+            <h2 class="section-title">Что будет с кожей</h2>
+            <p class="section-desc">Чего ожидать после отказа от сахара и перехода на чистое питание.</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot dot-red"></div>
+                <div class="timeline-period" style="color: var(--red);">Дни 1–3</div>
+                <div class="timeline-title">Сахарная ломка</div>
+                <div class="timeline-desc">Головная боль, раздражительность, слабость. Кожа пока без изменений. Это нормально — организм перестраивается. Ешь больше каш и пей воду.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot dot-orange"></div>
+                <div class="timeline-period" style="color: var(--orange);">Дни 4–7</div>
+                <div class="timeline-title">Первые изменения</div>
+                <div class="timeline-desc">Лицо перестанет так сильно блестеть, жирность снизится. Новых прыщей станет заметно меньше. Ломка отступает.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot dot-yellow"></div>
+                <div class="timeline-period" style="color: var(--yellow);">Дни 7–14</div>
+                <div class="timeline-title">Заживление</div>
+                <div class="timeline-desc">Старые прыщи начнут подсыхать. Покраснения станут бледнее. Еда без сахара покажется вкуснее — рецепторы «перезагрузились».</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot dot-green"></div>
+                <div class="timeline-period" style="color: var(--accent);">Дни 14–30</div>
+                <div class="timeline-title">Чистая кожа</div>
+                <div class="timeline-desc">Кожа станет ровнее. Подкожные прыщи начнут рассасываться. Пятна (постакне) постепенно светлеют. Новые воспаления — редкость.</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-cta">Начни завтра. Через месяц не узнаешь себя в зеркале.</div>
+        <p>Закупайся, вари яйца, замачивай горох. Никакой Колы. Вперёд! 💪</p>
+    </footer>
+
+    <script>
+        // Toggle recipes
+        function toggleRecipe(card) {
+            card.classList.toggle('open');
+        }
+
+        // Toggle days
+        function toggleDay(card) {
+            card.classList.toggle('open');
+        }
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('.section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const target = document.getElementById(targetId);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
